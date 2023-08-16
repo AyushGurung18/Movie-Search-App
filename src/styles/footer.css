@@ -1,0 +1,35 @@
+footer {
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: -170px;
+}
+.footer-site {
+  padding: 10px 25vw 10px 25vw;
+}
+.footer-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
+.footer-link-item {
+  color: grey;
+  list-style: none;
+  white-space: normal; /* This allows the text to wrap */
+  overflow-wrap: break-word;
+  margin: 10px 0px 10px 0px;
+  font-size: 14px;
+}
+.copyright{
+    color: grey;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 10vh;
+}
+.custom-link{
+    color: grey;
+    text-decoration: none;
+}
