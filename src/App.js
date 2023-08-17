@@ -4,11 +4,14 @@ import Signin from "./components/signin";
 import Signup from "./components/signup";
 import PrivateRoute from "./PrivateRoute";
 import Footer from "./components/footer";
+import Home from "./components/home";
+import PageNotFound from "./components/pagenotfound";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route
@@ -19,8 +22,8 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }

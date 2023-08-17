@@ -21,6 +21,7 @@
   width: 400px;
   height: 565px;
   padding: 50px;
+  border-radius: 4px;
 }
 .form-input {
   display: grid;
@@ -92,6 +93,63 @@ button {
 }
 @media only screen and (max-width: 635px) {
   .form-input-box {
-    left: 0vw;
+    left: 5vw;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .form-input-box {
+    left: 13vw;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .form-input-box {
+    left: 10vw;
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-input-box {
+    left: 5vw;
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .form-input-box {
+    left: 2.5vw;
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .form-input-box {
+    left: 1vw;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .form-input-box {
+    left: 6vw;
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .form-input-box {
+    left: 4vw;
+  }
+}
+@media only screen and (max-width: 395px) {
+  .form-input-box {
+    left: 4vw;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .form-input-box {
+    left: 3vw;
+  }
+}
+@media only screen and (max-width: 370px) {
+  .form-input-box {
+    left: 1vw;
   }
 }
