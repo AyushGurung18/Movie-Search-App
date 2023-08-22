@@ -1,13 +1,13 @@
 import React from "react";
 import "../styles/pagenotfound.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 function PageNotFound() {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
+
   return (
     <div className="notfound-image">
       <div className="pagenotfound">

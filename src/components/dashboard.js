@@ -21,11 +21,10 @@ function Dashboard() {
     };
 
     getMovieList();
-  }, []); // Empty dependency array ensures the effect runs only on component mount
+  }, []); 
 
   return (
     <div className="App">
-      {/* Display movie data */}
       <ul>
         {movieList.map((movie) => (
           <div>

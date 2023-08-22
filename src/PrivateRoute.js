@@ -24,7 +24,7 @@ function PrivateRoute({ children }) {
   if (loading) return <div>Loading...</div>; // Optional loading indicator
 
   if (!isAuthenticated) {
-    return <Navigate to="/signin" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

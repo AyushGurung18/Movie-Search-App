@@ -6,6 +6,7 @@ import bgimage from "../assets/bg-image.jpg";
 import "../styles/signin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import Footer from "./footer";
 
 function Signin() {
   const [email, setEmail] = useState();
@@ -92,6 +93,7 @@ function Signin() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

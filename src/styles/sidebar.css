@@ -1,0 +1,48 @@
+.sidebar {
+  width: 50px;
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  list-style: none;
+}
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -45px;
+}
+.sidebar-list-item {
+  margin: 25px 0px;
+}
+.user-profile-icon {
+  width: 40px;
+  z-index: 1;
+  height: 40px;
+  border-radius: 50%; /* Create a circular shape */
+  background-color: #e50914; /* Background color for the circle */
+  overflow: hidden;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.user-profile-icon img,
+.user-profile-icon svg {
+  width: 100%; /* Make the image/icon fill the circular area */
+  height: 100%;
+  padding: 5px 0px 0px;
+  object-fit: cover; /* Keep the image/icon proportionate */
+}
+.sidebar-icons {
+  font-size: 25px;
+  color: #BABABA;
+  cursor: pointer;
+}
+.sidebar-icons:hover{
+  color:#fff;
+}

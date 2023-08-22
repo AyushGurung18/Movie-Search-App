@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import bgimage from "../assets/bg-image.jpg";
+import Footer from "./footer";
 
 function Signup() {
   const location = useLocation();
@@ -11,6 +12,7 @@ function Signup() {
 
   const [email, setEmail] = useState(preFilledEmail);
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(""); // Add username state
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -29,17 +31,36 @@ function Signup() {
 
   const signUp = async () => {
     try {
-      if (isValidEmail(email) && isValidPassword(password)) {
-        await createUserWithEmailAndPassword(auth, email, password);
+      if (
+        isValidEmail(email) &&
+        isValidPassword(password) &&
+        username.trim() !== ""
+      ) {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
         sessionStorage.setItem("user", JSON.stringify(auth.currentUser));
+
+        await updateProfile(userCredential.user, {
+          displayName: username,
+        });
+
         navigate("/dashboard");
       } else if (!isValidEmail(email)) {
-        alert("Please enter a Valid email");
+        alert("Please enter a valid email");
       } else if (!isValidPassword(password)) {
-        alert("Please must contain 6 letters.");
+        alert("Password must contain at least 6 characters.");
+      } else if (username.trim() === "") {
+        alert("Please enter a username.");
       }
     } catch (err) {
-      console.error(err);
+      if (err.code === "auth/email-already-in-use") {
+        alert("Email address is already in use. Please use a different email.");
+      } else {
+        console.error(err);
+      }
     }
   };
 
@@ -47,7 +68,8 @@ function Signup() {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   };
-  const isValidPassword = async (password) => {
+
+  const isValidPassword = (password) => {
     return password.length >= 6;
   };
 
@@ -65,6 +87,12 @@ function Signup() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="password"
@@ -88,6 +116,7 @@ function Signup() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,43 @@
+.movie-section {
+  padding-left: 120px;
+  background-color: #000;
+  min-height: 100vh;
+}
+.content-info {
+  margin: 0;
+  padding: 150px 0px 50px 10px;
+  color: #e50914;
+}
+.movie-card {
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  max-width: 300px;
+  outline: none;
+}
+.movie-poster {
+  max-width: 100%;
+  height: auto;
+  transform: scale(0.97);
+}
+.movie-poster:hover {
+  transform: scale(1);
+  transition: 0.3s ease-out;
+}
+.movie-title {
+  font-size: 15px;
+  margin: 10px 0;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movie-info {
+  font-size: 14px;
+  color: #666;
+}
+ul {
+  margin: 0;
+}
