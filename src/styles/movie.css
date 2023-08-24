@@ -41,3 +41,17 @@
 ul {
   margin: 0;
 }
+.movie-info {
+  display: flex;
+}
+.Details-TableData {
+  color: white;
+  padding: 20px;
+}
+.cell {
+  padding: 0px 20px 0px 20px;
+  font-size: 20px;
+}
+.details-overview {
+  padding-left: 20px;
+}

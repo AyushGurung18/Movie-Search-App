@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { fetchTopRatedMovies, fetchTopRatedSeries } from "./MovieAPI";
 import Sidebar from "./sidebar";
 import LoadingScreen from "./loadingScreen";
+import { useNavigate } from "react-router-dom";
 
 function TopRatedContent() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [topRatedSeries, setTopRatedSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +42,11 @@ function TopRatedContent() {
         <h1 className="content-info">Now Playing Movies</h1>
 
         {topRatedMovies.map((movie) => (
-          <div className="movie-card" key={movie.id}>
+          <div
+            className="movie-card"
+            key={movie.id}
+            onClick={() => navigate(`/movie/${movie.id}`)}
+          >
             <img
               className="movie-poster"
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

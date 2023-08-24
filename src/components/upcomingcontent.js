@@ -3,11 +3,13 @@ import { fetchUpcomingMovies, fetchUpcomingSeries } from "./MovieAPI";
 import Sidebar from "./sidebar";
 import "../styles/movie.css";
 import LoadingScreen from "./loadingScreen";
+import { useNavigate } from "react-router-dom";
 
 function UpcomingContent() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [upcomingSeries, setUpcomingSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -41,7 +43,11 @@ function UpcomingContent() {
         <h1 className="content-info">Trending Series</h1>
 
         {upcomingMovies.map((movie) => (
-          <div className="movie-card" key={movie.id}>
+          <div
+            className="movie-card"
+            key={movie.id}
+            onClick={() => navigate(`/movie/${movie.id}`)}
+          >
             <img
               className="movie-poster"
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

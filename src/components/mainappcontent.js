@@ -129,7 +129,7 @@ function MainApp() {
               <h1 className="hero-title">{heroMovie?.title}</h1>
               <p className="">{heroMovie?.release_date}</p>
               <p className="">{heroMovie?.overview}</p>
-              <button>More Info</button>
+              <button  onClick={() => navigate(`/movie/${heroMovie.id}`)}>More Info</button>
             </div>
             <div className="gradient-effect"></div>
             <img
@@ -153,7 +153,7 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {popularMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -180,7 +180,7 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {nowPlayingMovie.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -207,7 +207,7 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {upcomingMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -233,7 +233,7 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {trendingMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -259,7 +259,7 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {topRatedMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

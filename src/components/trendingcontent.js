@@ -3,11 +3,13 @@ import { fetchTrendingMovies, fetchTrendingSeries } from "./MovieAPI";
 import "../styles/movie.css";
 import Sidebar from "./sidebar";
 import LoadingScreen from "./loadingScreen";
+import { useNavigate } from "react-router-dom";
 
 function TrendingContent() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [trendingSeries, setTrendingSeries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +42,11 @@ function TrendingContent() {
         <h1 className="content-info">Trending Series</h1>
 
         {trendingMovies.map((movie) => (
-          <div className="movie-card" key={movie.id}>
+          <div
+            className="movie-card"
+            key={movie.id}
+            onClick={() => navigate(`/movie/${movie.id}`)}
+          >
             <img
               className="movie-poster"
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

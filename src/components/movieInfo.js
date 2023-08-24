@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingScreen from "./loadingScreen";
 import Sidebar from "./sidebar";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MovieInfo = () => {
   const { id } = useParams();
@@ -37,7 +40,7 @@ const MovieInfo = () => {
   return (
     <div>
       <Sidebar />
-      <div className="mainapp-component">
+      <div className="movie-section">
         <div className="hero-container">
           <div className="background-black"></div>
           <div className="hero">
@@ -45,7 +48,6 @@ const MovieInfo = () => {
               <h1 className="hero-title">{movieData?.title}</h1>
               <p className="">{movieData?.release_date}</p>
               <p className="">{movieData?.overview}</p>
-              <button>More Info</button>
             </div>
             <div className="gradient-effect"></div>
             <img
@@ -55,24 +57,51 @@ const MovieInfo = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="">
-        <div>
-          <img
-            className="movie-poster"
-            src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
-            alt={movieData.title}
-            loading="lazy"
-          />
-          <div>
-            <h1>Storyline</h1>
-            <p>{movieData.overview}</p>
-            <p>Release Date{movieData.release_date}</p>
-            <p>Revenue Generated{movieData.revenue}</p>
-            <p>Budget {movieData.budget}</p>
-            <p>Runtime{movieData.runtime}</p>
-            <p>Origin Country{movieData.origin_country}</p>
-            <p>Status{movieData.status}</p>
+        <div className="movie-info">
+          <div className="">
+            <img
+              alt={movieData.title}
+              src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
+            />
+          </div>
+          <div className="details-overview">
+            <div className="">
+              <h1 className="cell">Storyline</h1>
+              <p className="cell">{movieData?.overview}</p>
+            </div>
+            <table>
+              <tr className="Details-TableData">
+                <td className="cell">Release</td>
+                <td className="cell">{movieData.release_date}</td>
+              </tr>
+              <tr className="Details-TableData">
+                <td className="cell">Runtime</td>
+                <td className="cell">{movieData.runtime}</td>
+              </tr>
+              <tr className="Details-TableData">
+                <td className="cell">Budget</td>
+                <td className="cell">${movieData.budget}</td>
+              </tr>
+              <tr className="Details-TableData">
+                <td className="cell">Revenue</td>
+                <td className="cell">${movieData.revenue}</td>
+              </tr>
+              <tr className="Details-TableData">
+                <td className="cell">Language</td>
+                <td className="cell">{movieData.spoken_languages[0].name}</td>
+              </tr>
+              <tr className="Details-TableData">
+                <td className="cell">Genres</td>
+                <td className="cell">
+                  {movieData.genres.map((genre, index) => (
+                    <span key={index}>
+                      {genre.name}
+                      {index !== movieData.genres.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
