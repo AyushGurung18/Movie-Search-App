@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
+import { useNavigate } from "react-router-dom";
 
 const API_KEY = "7ad4552f2438c7ea8e09aeabc10df108";
 const baseUrl = "https://api.themoviedb.org";
@@ -8,8 +9,7 @@ const SearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [seriesResults, setSeriesResults] = useState([]);
   const [movieResults, setMovieResults] = useState([]);
-
-
+  const navigate = useNavigate();
   useEffect(() => {
     const search = async () => {
       try {
@@ -55,7 +55,11 @@ const SearchComponent = () => {
         <div>
           <ul>
             {movieResults.map((movie) => (
-              <div className="movie-card" key={movie.id}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -71,7 +75,11 @@ const SearchComponent = () => {
         <div>
           <ul>
             {seriesResults.map((series) => (
-              <div className="movie-card" key={series.id}>
+              <div
+                className="movie-card"
+                key={series.id}
+                onClick={() => navigate(`/movie/${series.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${series.poster_path}`}

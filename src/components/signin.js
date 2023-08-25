@@ -16,7 +16,7 @@ function Signin() {
   useEffect(() => {
     const userFromStorage = JSON.parse(sessionStorage.getItem("user"));
     if (userFromStorage && !auth.currentUser) {
-      navigate("/dashboard");
+      navigate("/home");
     }
   }, [navigate]);
 
@@ -24,7 +24,7 @@ function Signin() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       sessionStorage.setItem("user", JSON.stringify(auth.currentUser));
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
       if (
         error.code === "auth/user-not-found" ||
@@ -41,6 +41,7 @@ function Signin() {
     try {
       await signInWithPopup(auth, googleProvider);
       sessionStorage.setItem("user", JSON.stringify(auth.currentUser));
+      navigate("/home")
     } catch (err) {
       console.error(err);
     }

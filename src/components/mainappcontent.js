@@ -7,7 +7,7 @@ import {
   fetchUpcomingMovies,
   fetchTrendingMovies,
   fetchTopRatedMovies,
-} from "./MovieAPI"; 
+} from "./MovieAPI";
 import Sidebar from "./sidebar";
 import "../styles/mainapp.css";
 import "slick-carousel/slick/slick.css";
@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 function MainApp() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [heroBackdrop, setHeroBackdrop] = useState(null);
-  const [heroMovie, setHeroMovie] = useState(null); 
+  const [heroMovie, setHeroMovie] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(1);
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -122,24 +122,26 @@ function MainApp() {
     <div>
       <Sidebar />
       <div className="mainapp-component">
-        <div className="hero-container">
-          <div className="background-black"></div>
-          <div className="hero">
-            <div className="hero-details">
-              <h1 className="hero-title">{heroMovie?.title}</h1>
-              <p className="">{heroMovie?.release_date}</p>
-              <p className="">{heroMovie?.overview}</p>
-              <button  onClick={() => navigate(`/movie/${heroMovie.id}`)}>More Info</button>
-            </div>
-            <div className="gradient-effect"></div>
-            <img
-              alt={heroMovie.title}
-              loading="lazy"
-              src={`https://image.tmdb.org/t/p/original${heroBackdrop}`}
-            />
-          </div>
-        </div>
         <div className="movie-section">
+          <div className="hero-container">
+            <div className="background-black"></div>
+            <div className="hero">
+              <div className="hero-details">
+                <h1 className="hero-title">{heroMovie?.title}</h1>
+                <p className="hero-para">{heroMovie?.release_date}</p>
+                <p className="hero-para">{heroMovie?.overview}</p>
+                <button onClick={() => navigate(`/movie/${heroMovie.id}`)}>
+                  More Info
+                </button>
+              </div>
+              <div className="gradient-effect"></div>
+              <img
+                alt={heroMovie.title}
+                loading="lazy"
+                src={`https://image.tmdb.org/t/p/original${heroBackdrop}`}
+              />
+            </div>
+          </div>
           <h1 className="section-info">
             Popular Movies{" "}
             <span
@@ -153,7 +155,11 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {popularMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -165,8 +171,6 @@ function MainApp() {
               </div>
             ))}
           </Slider>
-        </div>
-        <div className="movie-section">
           <h1 className="section-info">
             Now Playing Movies{" "}
             <span
@@ -180,7 +184,11 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {nowPlayingMovie.map((movie) => (
-              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -191,8 +199,6 @@ function MainApp() {
               </div>
             ))}
           </Slider>
-        </div>
-        <div className="movie-section">
           <h1 className="section-info">
             {" "}
             Upcoming Movies{" "}
@@ -207,7 +213,11 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {upcomingMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -218,8 +228,6 @@ function MainApp() {
               </div>
             ))}
           </Slider>
-        </div>
-        <div className="movie-section">
           <h1 className="section-info">
             Trending Movies{" "}
             <span
@@ -233,7 +241,11 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {trendingMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -244,8 +256,6 @@ function MainApp() {
               </div>
             ))}
           </Slider>
-        </div>
-        <div className="movie-section">
           <h1 className="section-info">
             Top Rated Movies{" "}
             <span
@@ -259,7 +269,11 @@ function MainApp() {
           </h1>
           <Slider {...settings}>
             {topRatedMovies.map((movie) => (
-              <div className="movie-card" key={movie.id}  onClick={() => navigate(`/movie/${movie.id}`)}>
+              <div
+                className="movie-card"
+                key={movie.id}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              >
                 <img
                   className="movie-poster"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

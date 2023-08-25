@@ -6,7 +6,7 @@
   display: flex;
 }
 .background-black {
-  width: 27vw;
+  width: 21vw;
 }
 .hero {
   position: relative;
@@ -49,6 +49,7 @@
   color: white;
   font-size: 15px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .slick-slide:focus {
   outline: none;

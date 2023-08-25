@@ -25,7 +25,7 @@ function Signup() {
     const userFromStorage = JSON.parse(sessionStorage.getItem("user"));
     if (userFromStorage && !auth.currentUser) {
       console.log(userFromStorage);
-      navigate("/dashboard");
+      navigate("/home");
     }
   }, [navigate]);
 

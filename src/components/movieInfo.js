@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingScreen from "./loadingScreen";
 import Sidebar from "./sidebar";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MovieInfo = () => {
   const { id } = useParams();
@@ -46,8 +47,8 @@ const MovieInfo = () => {
           <div className="hero">
             <div className="hero-details">
               <h1 className="hero-title">{movieData?.title}</h1>
-              <p className="">{movieData?.release_date}</p>
-              <p className="">{movieData?.overview}</p>
+              <p className="hero-para">{movieData?.release_date}</p>
+              <p className="hero-para">{movieData?.overview}</p>
             </div>
             <div className="gradient-effect"></div>
             <img
@@ -60,13 +61,17 @@ const MovieInfo = () => {
         <div className="movie-info">
           <div className="">
             <img
+              className="img-poster"
               alt={movieData.title}
               src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
             />
           </div>
           <div className="details-overview">
             <div className="">
-              <h1 className="cell">Storyline</h1>
+              <h1 className="cell">
+                Storyline{" "}
+                <FontAwesomeIcon icon={faHeart}  style={{color:"#e50914"}} className="sidebar-icons" />
+              </h1>
               <p className="cell">{movieData?.overview}</p>
             </div>
             <table>
@@ -76,15 +81,21 @@ const MovieInfo = () => {
               </tr>
               <tr className="Details-TableData">
                 <td className="cell">Runtime</td>
-                <td className="cell">{movieData.runtime}</td>
+                <td className="cell">
+                  {movieData.runtime > 59
+                    ? `${Math.floor(movieData.runtime / 60)} hr ${
+                        movieData.runtime % 60
+                      } min`
+                    : `${movieData.runtime} min`}
+                </td>
               </tr>
               <tr className="Details-TableData">
                 <td className="cell">Budget</td>
-                <td className="cell">${movieData.budget}</td>
+                <td className="cell">${movieData.budget.toLocaleString()}</td>
               </tr>
               <tr className="Details-TableData">
                 <td className="cell">Revenue</td>
-                <td className="cell">${movieData.revenue}</td>
+                <td className="cell">${movieData.revenue.toLocaleString()}</td>
               </tr>
               <tr className="Details-TableData">
                 <td className="cell">Language</td>
