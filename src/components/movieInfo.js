@@ -6,13 +6,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+
 
 const MovieInfo = () => {
   const { id } = useParams();
   const [movieData, setMovieData] = useState(null);
 
-  const apiKey = "7ad4552f2438c7ea8e09aeabc10df108";
-  const baseUrl = "https://api.themoviedb.org";
+  const apiKey = process.env.REACT_APP_BASE_KEY;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     async function fetchMovieData() {
@@ -49,6 +51,9 @@ const MovieInfo = () => {
               <h1 className="hero-title">{movieData?.title}</h1>
               <p className="hero-para">{movieData?.release_date}</p>
               <p className="hero-para">{movieData?.overview}</p>
+              <Link to={`/watch/${movieData.id}`}>
+                <button className="play-now-button">Play now</button>
+              </Link>
             </div>
             <div className="gradient-effect"></div>
             <img

@@ -28,7 +28,7 @@ function Footer() {
         </ul>
         <div>
           <p className="copyright">
-            &copy; 2023 &nbsp; <a href="https://ayushgurung.online" className="custom-link"> Ayush Gurung.</a>&nbsp; All rights reserved.
+            &copy; 2025 &nbsp; <a href="https://ayushgurung.com" target="_blank" className="custom-link"> Ayush Gurung.</a>&nbsp; All rights reserved.
           </p>
         </div>
       </div>

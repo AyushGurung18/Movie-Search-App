@@ -14,6 +14,8 @@ import TopRatedContent from "./components/topratedcontent";
 import MainApp from "./components/mainappcontent";
 import SearchComponent from "./components/search";
 import MovieDetailsComponent from "./components/movieInfo";
+import TVInfo from "./components/tvInfo";
+import NetflixPlayer from "./components/NetflixPlayer";
 
 function App() {
   return (
@@ -95,7 +97,19 @@ function App() {
               </PrivateRoute>
             }
           />
-
+          <Route
+            path="/tv/:id"
+            element={
+              <PrivateRoute>
+                <TVInfo />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/watch/:id" 
+          element={<PrivateRoute>
+                  <NetflixPlayer />
+                  </PrivateRoute>
+          } />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthProvider>

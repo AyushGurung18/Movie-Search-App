@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
 import { useNavigate } from "react-router-dom";
 
-const API_KEY = "7ad4552f2438c7ea8e09aeabc10df108";
-const baseUrl = "https://api.themoviedb.org";
+const API_KEY = process.env.REACT_APP_BASE_KEY;
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const SearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,6 +23,8 @@ const SearchComponent = () => {
           `${baseUrl}/3/search/tv?api_key=${API_KEY}&query=${searchQuery}`
         );
         const seriesData = await seriesResponse.json();
+        console.log(seriesData);
+        
         setSeriesResults(seriesData.results);
 
         const movieResponse = await fetch(
@@ -78,12 +80,16 @@ const SearchComponent = () => {
               <div
                 className="movie-card"
                 key={series.id}
-                onClick={() => navigate(`/movie/${series.id}`)}
+                onClick={() => navigate(`/tv/${series.id}`)}
               >
-                <img
+              <img
                   className="movie-poster"
-                  src={`https://image.tmdb.org/t/p/w300${series.poster_path}`}
-                  alt={series.title}
+                  src={
+                    series.poster_path
+                      ? `https://image.tmdb.org/t/p/w300${series.poster_path}`
+                      : "/fallback-image.jpg"
+                  }
+                  alt={series.name || series.original_name}
                 />
                 <h3 className="movie-title">{series.original_name}</h3>
                 <p className="movie-info">
